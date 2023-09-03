@@ -1,0 +1,26 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "yoavbls.pretty-ts-errors",
+    "mikestead.dotenv",
+    "prisma.prisma",
+    "gruntfuggly.todo-tree",
+    "yatki.vscode-surround",
+    "unional.vscode-sort-package-json",
+    "mscolnick.export-typescript",
+    "usernamehw.errorlens",
+    "ms-azuretools.vscode-docker",
+    "streetsidesoftware.code-spell-checker",
+    "matthewpi.caddyfile-support",
+    "wmaurer.change-case",
+    "dsznajder.es7-react-js-snippets",
+    "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "jasonnutter.search-node-modules",
+    "shardulm94.trailing-spaces",
+    "pflannery.vscode-versionlens",
+    "redhat.vscode-yaml",
+    "docsmsft.docs-yaml"
+  ]
+}
