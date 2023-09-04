@@ -17,14 +17,16 @@ export interface CreateContextOptions {
  * Inner function for `createContext` where we create the context.
  * This is useful for testing when we don't want to mock Next.js' request/response
  */
-export async function createContextInner(_opts: CreateContextOptions): Promise<
+export async function createContextInner({
+  session,
+}: CreateContextOptions): Promise<
   CreateContextOptions & {
     prisma: PrismaClient;
     redis: Redis;
   }
 > {
   return {
-    session: _opts.session,
+    session,
     prisma,
     redis,
   };

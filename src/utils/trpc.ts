@@ -1,4 +1,3 @@
-import { env } from '@/server/modules';
 import { httpBatchLink } from '@trpc/client/links/httpBatchLink';
 import { loggerLink } from '@trpc/client/links/loggerLink';
 import { createWSClient, wsLink } from '@trpc/client/links/wsLink';
@@ -18,7 +17,7 @@ import type {
 function getEndingLink(ctx: NextPageContext | undefined) {
   if (typeof window === 'undefined') {
     return httpBatchLink({
-      url: `${env.NEXT_PUBLIC_APP_URL}/api/trpc`,
+      url: `${process.env.NEXT_PUBLIC_APP_URL}/api/trpc`,
       headers() {
         if (!ctx?.req?.headers) {
           return {};
@@ -32,7 +31,7 @@ function getEndingLink(ctx: NextPageContext | undefined) {
     });
   }
   const client = createWSClient({
-    url: env.NEXT_PUBLIC_WS_URL,
+    url: `${process.env.NEXT_PUBLIC_WS_URL}`,
   });
   return wsLink<AppRouter>({
     client,

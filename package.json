@@ -14,12 +14,27 @@
   },
   "scripts": {
     "dev": "run-p dev:*",
-    "dev:next": "next dev",
-    "dev:server": "dotenv -e .env.development.local -c -- tsx watch src/server/server.dev.ts",
+    "dev:next": "dotenv -e .env.development.local -- next dev",
+    "dev:server": "dotenv -e .env.development.local -- tsx watch src/server/app.dev.ts  --tsconfig tsconfig.server.json ",
+    "dev:db": "dotenv -e .env.database.local -c -- docker-compose up -d",
+    "build": "run-s build:next build:server",
+    "build:next": "next build",
+    "build:server": "dotenv -e .env.production.local -- tsc --project tsconfig.server.json",
+    "start": "dotenv -e .env.production.local -- node dist/app.prod.js",
     "postinstall": "prisma generate",
     "lint": "eslint --cache --ext \".js,.ts,.tsx\" --report-unused-disable-directives --report-unused-disable-directives src",
     "lint-fix": "pnpm lint --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "db:migrate:dev": "dotenv -e .env.development.local -- prisma migrate dev --skip-seed",
+    "db:seed:dev": "dotenv -e .env.development.local -- prisma db seed",
+    "db:reset:dev": "dotenv -e .env.development.local -- prisma migrate reset --force --skip-seed",
+    "db:studio:dev": "dotenv -e .env.development.local -- prisma studio",
+    "db:prepare:dev": "run-s db:migrate:dev db:reset:dev db:seed:dev",
+    "db:migrate:prod": "dotenv -e .env.production.local -- prisma migrate deploy",
+    "db:seed:prod": "dotenv -e .env.production.local -- prisma db seed",
+    "db:reset:prod": "dotenv -e .env.production.local -- prisma migrate reset --force --skip-seed",
+    "db:studio:prod": "dotenv -e .env.production.local -- prisma studio",
+    "db:prepare:prod": "run-s db:migrate:prod db:reset:prod db:seed:prod"
   },
   "prettier": {
     "printWidth": 80,
@@ -89,5 +104,8 @@
   },
   "engines": {
     "node": "^18.15.0"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   }
 }

@@ -10,10 +10,6 @@
     "source.sortPackageJson": true
   },
   "eslint.format.enable": true,
-  "files.exclude": {
-    ".next": true,
-    "dist": true
-  },
   "search.exclude": {
     ".next": true,
     "dist": true
@@ -27,16 +23,30 @@
     "Caddyfile": "caddyfile"
   },
   "cSpell.words": [
+    "bullmq",
+    "commitlint",
     "fontsource",
+    "hookform",
     "ianvs",
     "NEXTAUTH",
+    "nextjs",
     "notistack",
     "pino",
     "superjson",
+    "tanstack",
     "trpc",
     "usehooks"
   ],
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

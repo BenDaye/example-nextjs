@@ -1,0 +1,25 @@
+version: "3"
+services:
+  pg:
+    image: postgres:14.2-alpine
+    restart: unless-stopped
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - pg:/var/lib/postgresql/data:rw
+  redis:
+    image: redis:6.2.6-alpine
+    restart: unless-stopped
+    ports:
+      - "${REDIS_PORT}:6379"
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - redis:/data:rw
+    command: redis-server --save 20 1 --loglevel warning --requirepass ${REDIS_PASSWORD}
+
+volumes:
+  pg:
+  redis:

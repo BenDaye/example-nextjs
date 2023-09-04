@@ -4,9 +4,15 @@
     "module": "commonjs",
     "outDir": "dist",
     "target": "ES2019",
-    "lib": ["ES2019", "DOM"],
+    "lib": [
+      "ES2019",
+      "DOM"
+    ],
     "isolatedModules": false,
-    "noEmit": false
+    "noEmit": false,
   },
-  "include": ["server.ts", "src/server/*"]
+  "include": [
+    "src/server/*",
+    "src/types/*"
+  ]
 }
